@@ -7,7 +7,9 @@ dependencies:
   enforced:
     module:
       - acquia_cms_page
+      - acquia_cms_site_studio
   module:
+    - acquia_cms_site_studio
     - cohesion_elements
 id: node.page.field_layout_canvas
 field_name: field_layout_canvas

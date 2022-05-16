@@ -2,11 +2,13 @@ langcode: en
 status: true
 dependencies:
   module:
+    - acquia_cms_site_studio
     - cohesion_elements
     - node
   enforced:
     module:
       - acquia_cms_page
+      - acquia_cms_site_studio
 id: node.field_layout_canvas
 field_name: field_layout_canvas
 entity_type: node

@@ -1,11 +1,9 @@
-
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.page.body
     - field.field.node.page.field_categories
-    - field.field.node.page.field_layout_canvas
     - field.field.node.page.field_page_image
     - field.field.node.page.field_tags
     - node.type.page
@@ -14,7 +12,6 @@ dependencies:
     module:
       - acquia_cms_page
   module:
-    - cohesion_elements
     - content_moderation
     - field_group
     - media_library
@@ -63,12 +60,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_layout_canvas:
-    type: cohesion_layout_builder_widget
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_page_image:
     type: media_library_widget
     weight: 3

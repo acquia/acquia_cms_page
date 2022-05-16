@@ -13,8 +13,8 @@ id: node.page.body
 field_name: body
 entity_type: node
 bundle: page
-label: 'Search Description'
-description: 'A short description or teaser which will be displayed in search results.'
+label: 'Body'
+description: ''
 required: false
 translatable: true
 default_value: {  }
