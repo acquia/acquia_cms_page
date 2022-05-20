@@ -13,7 +13,7 @@ use Drupal\Tests\acquia_cms_common\Functional\ContentTypeTestBase;
  * @group medium_risk
  * @group push
  */
-class PageTest extends ContentTypeTestBase {
+class PageWithSiteStudioTest extends ContentTypeTestBase {
 
   /**
    * {@inheritdoc}
@@ -25,6 +25,7 @@ class PageTest extends ContentTypeTestBase {
    */
   protected static $modules = [
     'acquia_cms_page',
+    'acquia_cms_site_studio',
     'menu_ui',
     'metatag_open_graph',
     'metatag_twitter_cards',
@@ -68,9 +69,7 @@ class PageTest extends ContentTypeTestBase {
     $assert_session->statusCodeEquals(200);
     // Assert that the expected fields show up.
     $assert_session->fieldExists('Title');
-    // Assert that layout canvas field is not present.
-    $assert_session->fieldNotExists('Layout Canvas');
-    $page->fillField('Body', 'This is an awesome remix!');
+    $page->fillField('Search Description', 'This is an awesome remix!');
     // The search description should not have a summary.
     $assert_session->fieldNotExists('Summary');
     // The standard Categories and Tags fields should be present.
@@ -82,6 +81,10 @@ class PageTest extends ContentTypeTestBase {
     // that a hidden field exists to store Cohesion's JSON-encoded layout canvas
     // data. For our purposes, checking for the existence of the hidden field
     // should be sufficient.
+    $assert_session->hiddenFieldExists('field_layout_canvas[0][target_id][json_values]');
+    // There should be a select list to choose the moderation state, and it
+    // should default to Draft. Note that which moderation states are available
+    // depends on the current user's permissions.
     $assert_session->optionExists('Save as', 'Draft');
     // The "Published", "Promoted to front page", and "Sticky at top of lists"
     // checkboxes should not be anywhere on this form. We want to assert the
@@ -101,6 +104,7 @@ class PageTest extends ContentTypeTestBase {
     $this->assertFieldsOrder([
       'title',
       'body',
+      'field_layout_canvas',
       'field_categories',
       'field_page_image',
       'field_tags',

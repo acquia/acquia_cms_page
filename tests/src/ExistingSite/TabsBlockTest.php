@@ -44,6 +44,9 @@ class TabsBlockTest extends ExistingSiteBase {
    * @param string $role
    *   The ID of the user role to test with.
    *
+   * @throws \Behat\Mink\Exception\ElementNotFoundException
+   * @throws \Drupal\Core\Entity\EntityMalformedException
+   * @throws \Drupal\Core\Entity\EntityStorageException
    * @dataProvider providerTabsBlock
    */
   public function testTabsBlock(string $role) {
