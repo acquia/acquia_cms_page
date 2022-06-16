@@ -47,7 +47,19 @@ class PageWithSiteStudioTest extends ContentTypeTestBase {
   // @codingStandardsIgnoreStart
   protected $strictConfigSchema = FALSE;
   // @codingStandardsIgnoreEnd
-
+  
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp(): void {
+    parent::setUp();
+    // Disable js cache to prevent failure of site studio test.
+    $this->container->get('config.factory')
+      ->getEditable('system.performance')
+      ->set('js.preprocess', false)
+      ->save(TRUE);
+  }
+  
   /**
    * {@inheritdoc}
    */
