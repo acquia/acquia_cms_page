@@ -63,9 +63,9 @@ class PageWithLayoutCanvasFieldTest extends FieldKernelTestBase {
       'moderation_state',
     ];
     $field_definitions = $this->fieldDefinition->loadByProperties([
-        'entity_type' => 'node',
-        'bundle' => 'page',
-      ]);
+      'entity_type' => 'node',
+      'bundle' => 'page',
+    ]);
 
     /** @var \Drupal\Core\Field\FieldDefinitionInterface $field_definition */
     foreach ($field_definitions as $field_definition) {
@@ -73,4 +73,5 @@ class PageWithLayoutCanvasFieldTest extends FieldKernelTestBase {
       $this->assertTrue(in_array($field_name, $expected_fields), "$field_name does not exists!");
     }
   }
+
 }
