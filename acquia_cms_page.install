@@ -26,3 +26,14 @@ function acquia_cms_page_install() {
 function acquia_cms_page_module_preinstall($module) {
   \Drupal::service('acquia_cms_common.utility')->setModulePreinstallTriggered($module);
 }
+
+/**
+ * Implements hook_modules_installed().
+ */
+function acquia_cms_page_modules_installed(array $module) {
+  // Enable page demo content only if site studio is not installed.
+  $module_handler = \Drupal::moduleHandler();
+  if (!$module_handler->moduleExists('acquia_cms_site_studio')) {
+    \Drupal::service('module_installer')->install(['acquia_cms_page_content']);
+  }
+}
